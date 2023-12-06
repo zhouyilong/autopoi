@@ -173,7 +173,7 @@ public class ImportBaseService {
 				newMethods.add(PoiPublicUtil.getMethod(field.getName(), pojoClass));
 				//update-begin-author:taoyan date:20210531 for:excel导入支持 注解@ExcelEntity显示合并表头
 				ExcelEntity excel = field.getAnnotation(ExcelEntity.class);
-				if(excel.show()==true){
+				if(excel != null && excel.show()){
 					Map<String, ExcelImportEntity> subExcelParams = new HashMap<>();
 					// 这里有个设计的坑，导出的时候最后一个参数是null, 即getgetMethods获取的是空，导入的时候需要设置层级getmethod
 					getAllExcelField(targetId, PoiPublicUtil.getClassFields(field.getType()), subExcelParams, excelCollection, field.getType(), newMethods);
