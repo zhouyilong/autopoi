@@ -27,6 +27,7 @@ import java.util.*;
 
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.jeecgframework.core.util.ApplicationContextUtil;
 import org.jeecgframework.dict.service.AutoPoiDictServiceI;
 import org.jeecgframework.poi.excel.annotation.Excel;
@@ -343,6 +344,8 @@ public class ExportBase {
 			excelEntity.setColspan(true);
 		}
 		//update-end-author:taoyan date:20200319 for:autopoi 双表头问题 #862 基于实体注解的解决方案
+		excelEntity.setHorizontalAlignment(excel.horizontalAlignment());
+		excelEntity.setVerticalAlignment(excel.verticalAlignment());
 	}
 
 	/**

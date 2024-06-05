@@ -42,14 +42,14 @@ public class ExcelExportStylerColorImpl extends AbstractExcelExportStyler implem
 	}
 
 	@Override
-	public CellStyle stringNoneStyle(Workbook workbook, boolean isWarp) {
+	public CellStyle stringNoneStyle(Workbook workbook, boolean isWarp, HorizontalAlignment alignment, VerticalAlignment verticalAlignment) {
 		CellStyle style = workbook.createCellStyle();
 		style.setBorderLeft(BorderStyle.THIN); // 左边框
 		style.setBorderRight(BorderStyle.THIN); // 右边框
 		style.setBorderBottom(BorderStyle.THIN);
 		style.setBorderTop(BorderStyle.THIN);
-		style.setAlignment(HorizontalAlignment.CENTER);
-		style.setVerticalAlignment(VerticalAlignment.CENTER);
+		style.setAlignment(alignment);
+		style.setVerticalAlignment(verticalAlignment);
 		style.setDataFormat(STRING_FORMAT);
 		if (isWarp) {
 			style.setWrapText(true);
@@ -69,7 +69,7 @@ public class ExcelExportStylerColorImpl extends AbstractExcelExportStyler implem
 	}
 
 	@Override
-	public CellStyle stringSeptailStyle(Workbook workbook, boolean isWarp) {
+	public CellStyle stringSeptailStyle(Workbook workbook, boolean isWarp, HorizontalAlignment alignment, VerticalAlignment verticalAlignment) {
 		CellStyle style = workbook.createCellStyle();
 		style.setBorderLeft(BorderStyle.THIN); // 左边框
 		style.setBorderRight(BorderStyle.THIN); // 右边框
@@ -77,8 +77,8 @@ public class ExcelExportStylerColorImpl extends AbstractExcelExportStyler implem
 		style.setBorderTop(BorderStyle.THIN);
 		style.setFillForegroundColor((short) 41); // 填充的背景颜色
 		style.setFillPattern(FillPatternType.SOLID_FOREGROUND); // 填充图案
-		style.setAlignment(HorizontalAlignment.CENTER);
-		style.setVerticalAlignment(VerticalAlignment.CENTER);
+		style.setAlignment(alignment);
+		style.setVerticalAlignment(verticalAlignment);
 		style.setDataFormat(STRING_FORMAT);
 		if (isWarp) {
 			style.setWrapText(true);

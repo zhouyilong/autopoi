@@ -15,6 +15,9 @@
  */
 package org.jeecgframework.poi.excel.annotation;
 
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
+
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -199,4 +202,16 @@ public @interface Excel {
 	 * @return
 	 */
 	public boolean isHyperlink() default false;
+
+	/**
+	 * 水平对齐方式
+	 * @return
+	 */
+	HorizontalAlignment horizontalAlignment() default HorizontalAlignment.CENTER;
+
+	/**
+	 * 垂直对齐方式
+	 * @return
+	 */
+	VerticalAlignment verticalAlignment() default VerticalAlignment.CENTER;
 }

@@ -15,9 +15,7 @@
  */
 package org.jeecgframework.poi.excel.export.styler;
 
-import org.apache.poi.ss.usermodel.BuiltinFormats;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.jeecgframework.poi.excel.entity.params.ExcelExportEntity;
 import org.jeecgframework.poi.excel.entity.params.ExcelForEachParams;
 
@@ -40,32 +38,33 @@ public abstract class AbstractExcelExportStyler implements IExcelExportStyler {
 	protected static final short STRING_FORMAT = (short) BuiltinFormats.getBuiltinFormat("TEXT");
 
 	protected void createStyles(Workbook workbook) {
-		this.stringNoneStyle = stringNoneStyle(workbook, false);
-		this.stringNoneWrapStyle = stringNoneStyle(workbook, true);
-		this.stringSeptailStyle = stringSeptailStyle(workbook, false);
-		this.stringSeptailWrapStyle = stringSeptailStyle(workbook, true);
+		this.stringNoneStyle = stringNoneStyle(workbook, false, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+		this.stringNoneWrapStyle = stringNoneStyle(workbook, true, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+		this.stringSeptailStyle = stringSeptailStyle(workbook, false, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
+		this.stringSeptailWrapStyle = stringSeptailStyle(workbook, true, HorizontalAlignment.CENTER, VerticalAlignment.CENTER);
 		this.workbook = workbook;
 	}
 
 	@Override
 	public CellStyle getStyles(boolean noneStyler, ExcelExportEntity entity) {
 		if (noneStyler && (entity == null || entity.isWrap())) {
-			return stringNoneWrapStyle;
+			return stringNoneStyle(workbook, true, entity == null ? HorizontalAlignment.CENTER : entity.getHorizontalAlignment(), entity == null ? VerticalAlignment.CENTER : entity.getVerticalAlignment());
 		}
 		if (noneStyler) {
-			return stringNoneStyle;
+			return stringNoneStyle(workbook, false, entity.getHorizontalAlignment(), entity.getVerticalAlignment());
 		}
 		if (noneStyler == false && (entity == null || entity.isWrap())) {
-			return stringSeptailWrapStyle;
+			return stringSeptailStyle(workbook, true, entity == null ? HorizontalAlignment.CENTER : entity.getHorizontalAlignment(), entity == null ? VerticalAlignment.CENTER : entity.getVerticalAlignment());
 		}
-		return stringSeptailStyle;
+
+		return stringSeptailStyle(workbook, false, entity.getHorizontalAlignment(), entity.getVerticalAlignment());
 	}
 
-	public CellStyle stringNoneStyle(Workbook workbook, boolean isWarp) {
+	public CellStyle stringNoneStyle(Workbook workbook, boolean isWarp, HorizontalAlignment alignment, VerticalAlignment verticalAlignment) {
 		return null;
 	}
 
-	public CellStyle stringSeptailStyle(Workbook workbook, boolean isWarp) {
+	public CellStyle stringSeptailStyle(Workbook workbook, boolean isWarp, HorizontalAlignment alignment, VerticalAlignment verticalAlignment) {
 		return null;
 	}
 

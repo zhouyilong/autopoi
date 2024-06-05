@@ -39,10 +39,10 @@ public class ExcelExportStylerDefaultImpl extends AbstractExcelExportStyler impl
 	}
 
 	@Override
-	public CellStyle stringSeptailStyle(Workbook workbook, boolean isWarp) {
+	public CellStyle stringSeptailStyle(Workbook workbook, boolean isWarp, HorizontalAlignment alignment, VerticalAlignment verticalAlignment) {
 		CellStyle style = workbook.createCellStyle();
-		style.setAlignment( HorizontalAlignment.CENTER);
-		style.setVerticalAlignment(VerticalAlignment.CENTER);
+		style.setAlignment(alignment);
+		style.setVerticalAlignment(verticalAlignment);
 		style.setDataFormat(STRING_FORMAT);
 		if (isWarp) {
 			style.setWrapText(true);
@@ -62,10 +62,10 @@ public class ExcelExportStylerDefaultImpl extends AbstractExcelExportStyler impl
 	}
 
 	@Override
-	public CellStyle stringNoneStyle(Workbook workbook, boolean isWarp) {
+	public CellStyle stringNoneStyle(Workbook workbook, boolean isWarp, HorizontalAlignment alignment, VerticalAlignment verticalAlignment) {
 		CellStyle style = workbook.createCellStyle();
-		style.setAlignment(HorizontalAlignment.CENTER);
-		style.setVerticalAlignment(VerticalAlignment.CENTER);
+		style.setAlignment(alignment);
+		style.setVerticalAlignment(verticalAlignment);
 		style.setDataFormat(STRING_FORMAT);
 		if (isWarp) {
 			style.setWrapText(true);

@@ -15,6 +15,9 @@
  */
 package org.jeecgframework.poi.excel.entity.params;
 
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
+import org.apache.poi.ss.usermodel.VerticalAlignment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,6 +99,26 @@ public class ExcelExportEntity extends ExcelBaseEntity implements Comparable<Exc
 	private boolean isColumnHidden;
 
 	private List<ExcelExportEntity> list;
+
+	private HorizontalAlignment horizontalAlignment;
+
+	public HorizontalAlignment getHorizontalAlignment() {
+		return horizontalAlignment;
+	}
+
+	public void setHorizontalAlignment(HorizontalAlignment horizontalAlignment) {
+		this.horizontalAlignment = horizontalAlignment;
+	}
+
+	private VerticalAlignment verticalAlignment;
+
+	public VerticalAlignment getVerticalAlignment() {
+		return verticalAlignment;
+	}
+
+	public void setVerticalAlignment(VerticalAlignment verticalAlignment) {
+		this.verticalAlignment = verticalAlignment;
+	}
 
 	public ExcelExportEntity() {
 
